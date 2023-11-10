@@ -1,0 +1,305 @@
+INFO  ManagerLargeConsumer - receive: StockDTO(route=SMALL, message=Small 1)
+INFO  ManagerSmallConsumer - receive: StockDTO(route=SMALL, message=Small 3)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerSmallConsumer - done
+INFO  ManagerSmallConsumer - (SMALL) send on queue: stock.sizes, message: StockDTO(route=SMALL, message=Small 3)
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 1)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 2)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 1)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=SMALL, message=Small 1)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=SMALL, message=Small 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 5)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=MEDIUM, message=Medium 3)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=LARGE, message=Large 5)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=LARGE, message=Large 5)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=SMALL, message=Small 1)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=SMALL, message=Small 4)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 2)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - done
+INFO  ManagerMediumConsumer - (MEDIUM) send on queue: stock.sizem, message: StockDTO(route=MEDIUM, message=Medium 3)
+INFO  ManagerMediumConsumer - receive: StockDTO(route=LARGE, message=Large 1)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - done
+INFO  ManagerSmallConsumer - (SMALL) send on queue: stock.sizes, message: StockDTO(route=SMALL, message=Small 1)
+INFO  ManagerSmallConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=LARGE, message=Large 1)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=LARGE, message=Large 4)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 2)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerMediumConsumer - done
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=LARGE, message=Large 4)
+
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 2)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=MEDIUM, message=Medium 1)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - done
+INFO  ManagerMediumConsumer - done
+INFO  ManagerMediumConsumer - (MEDIUM) send on queue: stock.sizem, message: StockDTO(route=MEDIUM, message=Medium 1)
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 5)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=LARGE, message=Large 3)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 5)
+
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 5)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 4)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - done
+INFO  ManagerLargeConsumer - (LARGE) send on queue: stock.sizel, message: StockDTO(route=LARGE, message=Large 3)
+INFO  ManagerLargeConsumer - receive: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 4)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - receive: StockDTO(route=SMALL, message=Small 4)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+INFO  ManagerSmallConsumer - (SMALL) send on queue: stock.sizes, message: StockDTO(route=SMALL, message=Small 4)
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=SMALL, message=Small 2)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=MEDIUM, message=Medium 2)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerMediumConsumer - done
+INFO  ManagerMediumConsumer - (MEDIUM) send on queue: stock.sizem, message: StockDTO(route=MEDIUM, message=Medium 2)
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=LARGE, message=Large 5)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 5)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - done
+INFO  ManagerLargeConsumer - (LARGE) send on queue: stock.sizel, message: StockDTO(route=LARGE, message=Large 5)
+INFO  ManagerLargeConsumer - receive: StockDTO(route=LARGE, message=Large 1)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerSmallConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=LARGE, message=Large 2)
+
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 5)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerLargeConsumer - done
+INFO  ManagerLargeConsumer - (LARGE) send on queue: stock.sizel, message: StockDTO(route=LARGE, message=Large 1)
+INFO  ManagerLargeConsumer - receive: StockDTO(route=LARGE, message=Large 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 5)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+INFO  ManagerSmallConsumer - (SMALL) send on queue: stock.sizes, message: StockDTO(route=SMALL, message=Small 5)
+INFO  ManagerLargeConsumer - done
+INFO  ManagerLargeConsumer - (LARGE) send on queue: stock.sizel, message: StockDTO(route=LARGE, message=Large 4)
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 5)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=SMALL, message=Small 2)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - receive: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerMediumConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerMediumConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (MEDIUM): receive StockDTO(route=SMALL, message=Small 2)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerSmallConsumer - done
+INFO  ManagerSmallConsumer - (SMALL) send on queue: stock.sizes, message: StockDTO(route=SMALL, message=Small 2)
+INFO  ManagerLargeConsumer - done
+INFO  ManagerLargeConsumer - (LARGE) send on queue: stock.sizel, message: StockDTO(route=LARGE, message=Large 2)
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 5)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerMediumConsumer - receive: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerMediumConsumer - done
+INFO  ManagerMediumConsumer - (MEDIUM) send on queue: stock.sizem, message: StockDTO(route=MEDIUM, message=Medium 5)
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerSmallConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerSmallConsumer - aspetta: 1
+INFO  ManagerSmallConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerSmallConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (SMALL): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerLargeConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerLargeConsumer - aspetta: 3
+INFO  ManagerLargeConsumer - done
+WARN  ConditionalRejectingErrorHandler - Execution of Rabbit message listener failed.
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void it.dgs.queuemanager.queue.ManagerLargeConsumer.receive(it.dgs.queuemanager.dto.StockDTO) throws java.lang.Exception' threw exception
+###Caused by: java.lang.Exception: It is not mine (LARGE): receive StockDTO(route=MEDIUM, message=Medium 4)
+
+INFO  ManagerMediumConsumer - receive: StockDTO(route=MEDIUM, message=Medium 4)
+INFO  ManagerMediumConsumer - aspetta: 2
+INFO  ManagerMediumConsumer - done
+INFO  ManagerMediumConsumer - (MEDIUM) send on queue: stock.sizem, message: StockDTO(route=MEDIUM, message=Medium 4)
